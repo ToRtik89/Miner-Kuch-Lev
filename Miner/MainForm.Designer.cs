@@ -1,6 +1,6 @@
 ﻿namespace Miner
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -30,7 +30,7 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.new_game = new System.Windows.Forms.Button();
-            this.rec = new System.Windows.Forms.Button();
+            this.leadersButton = new System.Windows.Forms.Button();
             this.settings = new System.Windows.Forms.Button();
             this.exit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,7 +44,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.Controls.Add(this.new_game, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.rec, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.leadersButton, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.settings, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.exit, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 0);
@@ -72,15 +72,16 @@
             this.new_game.UseVisualStyleBackColor = true;
             this.new_game.Click += new System.EventHandler(this.new_game_Click);
             // 
-            // rec
+            // leadersButton
             // 
-            this.rec.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rec.Location = new System.Drawing.Point(269, 245);
-            this.rec.Name = "rec";
-            this.rec.Size = new System.Drawing.Size(260, 63);
-            this.rec.TabIndex = 1;
-            this.rec.Text = "records(не робит)";
-            this.rec.UseVisualStyleBackColor = true;
+            this.leadersButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.leadersButton.Location = new System.Drawing.Point(269, 245);
+            this.leadersButton.Name = "leadersButton";
+            this.leadersButton.Size = new System.Drawing.Size(260, 63);
+            this.leadersButton.TabIndex = 1;
+            this.leadersButton.Text = "records(не робит)";
+            this.leadersButton.UseVisualStyleBackColor = true;
+            this.leadersButton.Click += new System.EventHandler(this.leadersButton_Click);
             // 
             // settings
             // 
@@ -114,13 +115,13 @@
             this.label1.Text = "грибы Тимо";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Form1";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -132,7 +133,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button new_game;
-        private System.Windows.Forms.Button rec;
+        private System.Windows.Forms.Button leadersButton;
         private System.Windows.Forms.Button settings;
         private System.Windows.Forms.Button exit;
         private System.Windows.Forms.Label label1;

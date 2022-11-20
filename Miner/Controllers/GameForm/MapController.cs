@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Miner.Controllers
@@ -28,6 +24,10 @@ namespace Miner.Controllers
 
         public static Form form;
 
+        private static Timer timer1;
+
+        private static int score;
+
         private static void ConfigureMapSize(Form current)
         {
             current.Width = mapSize * cellSize + 20;
@@ -36,6 +36,9 @@ namespace Miner.Controllers
 
         private static void InitMap()
         {
+
+
+
             for (int i = 0; i < mapSize; i++)
             {
                 for (int j = 0; j < mapSize; j++)
@@ -48,12 +51,25 @@ namespace Miner.Controllers
         public static void Init(Form current)
         {
             form = current;
+
+            timer1 = new Timer();
+
+            timer1.Enabled = true;
+
+            timer1.Interval = 1000;
+
+            timer1.Tick += timerTick;
+
+            timer1.Start();
+
+
             currentPictureToSet = 0;
             isFirstStep = true;
             spriteSet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\tiles.png"));
             ConfigureMapSize(current);
             InitMap();
             InitButtons(current);
+
         }
 
         private static void InitButtons(Form current)
@@ -128,9 +144,14 @@ namespace Miner.Controllers
             if (map[iButton, jButton] == -1)
             {
                 ShowAllBombs(iButton,jButton);
+                FormsClass.GameForm.Close();
+
+                timer1.Stop();
+
                 MessageBox.Show("Поражение!");
-                form.Controls.Clear();
-                Init(form);
+                FormsClass.InputUsernameForm.Score = score;
+                FormsClass.InputUsernameForm.Show();
+
             }
         }
 
@@ -271,5 +292,9 @@ namespace Miner.Controllers
             }
             return true;
         }
+
+
+        private static void timerTick(Object myObject, EventArgs myEventArgs) => score += 1;
+
     }
 }
